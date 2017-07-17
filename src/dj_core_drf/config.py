@@ -22,6 +22,7 @@ class Config(BaseConfig):
 
     def get_installed_apps(self, settings):
         return super(Config, self).get_installed_apps(settings) + [
+            'dj_core_drf',
             'rest_framework',
             'rest_framework.authtoken',
             'rest_framework_swagger',
