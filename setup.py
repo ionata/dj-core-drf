@@ -4,7 +4,7 @@ import io
 from setuptools import setup, find_packages
 
 
-with io.open('README.rst', encoding='utf-8') as handle:
+with io.open('README.md', encoding='utf-8') as handle:
     readme = handle.read()
 
 
