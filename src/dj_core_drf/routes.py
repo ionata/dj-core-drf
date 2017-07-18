@@ -22,7 +22,7 @@ viewsets = [
     if app_name != __package__ and hasattr(module, 'routes')
 ]
 for regex, viewset in chain.from_iterable(viewsets):
-    if not isinstance(viewset, ViewSetMixin):
+    if not issubclass(viewset, ViewSetMixin):
         raise TypeError('Only ViewSets may be added to routers')
     v1_router.register(regex, viewset, base_name=regex)
 
