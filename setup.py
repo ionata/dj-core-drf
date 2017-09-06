@@ -14,7 +14,7 @@ with io.open('requirements-production.txt', encoding='utf-8') as handle:
 
 setup(
     name='dj-core-drf',
-    version='0.0.3',
+    version='0.0.4',
     description='A self-contained and extensible Django Rest Framework environment',
     long_description=readme,
     author='Ionata Digital',
