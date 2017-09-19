@@ -21,19 +21,18 @@ class Config(BaseConfig):
         'REST_FRAMEWORK': DefaultProxy({}, 'get_drf_settings'),
         'REST_AUTH_SERIALIZERS': DefaultProxy({}, 'get_rest_auth_serializers'),
     })
-
-    def get_installed_apps(self, settings):
-        return super(Config, self).get_installed_apps(settings) + [
-            'rest_framework',
-            'rest_framework.authtoken',
-            'rest_framework_swagger',
-            'rest_auth',
-            'allauth',
-            'allauth.account',
-            'rest_auth.registration',
-            'revproxy',
-            'django_filters',
-        ]
+    defaults.INSTALLED_APPS_REQUIRED = [
+        'dj_core_drf',
+        'rest_framework',
+        'rest_framework.authtoken',
+        'rest_framework_swagger',
+        'rest_auth',
+        'allauth',
+        'allauth.account',
+        'rest_auth.registration',
+        'revproxy',
+        'django_filters',
+    ] + defaults.INSTALLED_APPS_REQUIRED
 
     def get_drf_settings(self, settings):  # pylint: disable=unused-argument,no-self-use
         return {
