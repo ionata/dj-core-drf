@@ -1,4 +1,5 @@
 # DEV
+- Update for dj-core 0.0.10
 # 0.0.5
 - update `INSTALLED_APPS` to use `INSTALLED_APPS_REQUIRED`
 - Update for dj-core 0.0.6
