@@ -1,4 +1,5 @@
 # DEV
+- Update dj-core to 0.0.11
 # 0.0.6
 - Update for dj-core 0.0.10
 # 0.0.5
