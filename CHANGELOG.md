@@ -1,4 +1,5 @@
 # DEV
+- Add missing file to MANIFEST.in
 # 0.0.7
 - Add 'defaults' extras install option
 - Update dj-core to 0.0.11
