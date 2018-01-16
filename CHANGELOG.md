@@ -1,4 +1,5 @@
 # DEV
+- Bump requirements
 # 0.0.8
 - Add missing file to MANIFEST.in
 # 0.0.7
