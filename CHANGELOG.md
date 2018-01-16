@@ -1,4 +1,5 @@
 # DEV
+- Remove revproxy from defaults
 - Bump requirements
 # 0.0.8
 - Add missing file to MANIFEST.in

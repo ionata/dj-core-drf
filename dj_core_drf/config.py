@@ -30,9 +30,11 @@ class Config(BaseConfig):
         'allauth',
         'allauth.account',
         'rest_auth.registration',
-        'revproxy',
         'django_filters',
     ] + defaults.INSTALLED_APPS_REQUIRED
+    defaults.INSTALLED_APPS_OPTIONAL += [
+        'revproxy',
+    ]
 
     def get_drf_settings(self, settings):  # pylint: disable=unused-argument,no-self-use
         return {
