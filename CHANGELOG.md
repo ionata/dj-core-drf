@@ -1,4 +1,5 @@
 # DEV
+# 0.1.0
 - Remove revproxy from defaults
 - Bump requirements
 # 0.0.8

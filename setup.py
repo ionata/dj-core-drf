@@ -13,7 +13,7 @@ def _read(filename, as_lines=True):
 
 setup(
     name='dj-core-drf',
-    version='0.0.8',
+    version='0.1.0',
     description='A self-contained and extensible Django Rest Framework environment',
     long_description=_read('README.md', as_lines=False),
     author='Ionata Digital',
