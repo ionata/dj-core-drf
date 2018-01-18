@@ -42,4 +42,4 @@ if settings.ACCOUNT_REGISTRATION.lower() == 'enabled':
     api_v1.append(url(r'^auth/registration/', include(rest_auth_registration_urls)))
 
 
-urlpatterns = [url(r'^backend/api/v1/', include(api_v1))]
+urlpatterns = [url(settings.DJCORE_DRF.API_ROOT_URLPATH, include(api_v1))]

@@ -1,4 +1,5 @@
 # DEV
+- Add setting to configure the API root url path
 # 0.0.8
 - Add missing file to MANIFEST.in
 # 0.0.7

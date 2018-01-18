@@ -6,6 +6,7 @@ from dj_core.config import Config as BaseConfig, DefaultProxy
 class Config(BaseConfig):
     defaults = BaseConfig.defaults.copy()
     defaults.update({
+        'DJCORE_DRF__API_ROOT_URLPATH': DefaultProxy('', r'^backend/api/v1/'),
         'ACCOUNT_AUTHENTICATION_METHOD': 'email',
         'ACCOUNT_EMAIL_REQUIRED': True,
         'ACCOUNT_EMAIL_VERIFICATION': 'none',
