@@ -1,4 +1,5 @@
 # DEV
+- Add default registration serializer with casefold
 # 0.1.0
 - Remove revproxy from defaults
 - Bump requirements

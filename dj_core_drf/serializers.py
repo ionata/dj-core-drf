@@ -3,9 +3,11 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.http import urlsafe_base64_encode as b64e
 from enumfields.fields import EnumFieldMixin
-from rest_auth.serializers import (
-    LoginSerializer as RALoginSerializer,
-    PasswordResetSerializer as RAPasswordResetSerializer)
+from rest_auth.registration.serializers import \
+    RegisterSerializer as RARegisterSerializer
+from rest_auth.serializers import LoginSerializer as RALoginSerializer
+from rest_auth.serializers import \
+    PasswordResetSerializer as RAPasswordResetSerializer
 from rest_framework.serializers import ModelSerializer as BaseModelSerializer
 
 from .fields import LocalDateTimeField, RestEnumField
@@ -32,13 +34,13 @@ class UserDetailsSerializer(ModelSerializer):
 
 class LoginSerializer(RALoginSerializer):  # pylint: disable=abstract-method
     def validate_email(self, value):  # pylint: disable=no-self-use
-        return value.lower()
+        return value.casefold()
 
 
 class PasswordResetSerializer(RAPasswordResetSerializer):  # pylint: disable=abstract-method
     def get_email_context(self):
         return {
-            'email_encoded': b64e(self.data['email'].lower().encode('utf-8')),
+            'email_encoded': b64e(self.data['email'].casefold().encode('utf-8')),
             'frontend_url': settings.DJCORE.FRONTEND_URL,
             'site_url': settings.DJCORE.SITE_URL,
         }
@@ -51,4 +53,12 @@ class PasswordResetSerializer(RAPasswordResetSerializer):  # pylint: disable=abs
         }}
 
     def validate_email(self, value):  # pylint: disable=no-self-use
-        return super().validate_email(value.lower())
+        return super().validate_email(value.casefold())
+
+
+class RegisterSerializer(RARegisterSerializer):
+    """Signup serializer for users."""
+
+    def validate_email(self, email):  # pylint: disable=no-self-use
+        """Override existing validation to casefold the emails."""
+        return super().validate_email(email.casefold())

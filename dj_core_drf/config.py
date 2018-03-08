@@ -1,9 +1,12 @@
+"""Configuration for the dj_core_drf app."""
 from datetime import timedelta
 
 from dj_core.config import Config as BaseConfig, DefaultProxy
 
 
 class Config(BaseConfig):
+    """Override config to inject our defaults."""
+
     defaults = BaseConfig.defaults.copy()
     defaults.update({
         'ACCOUNT_AUTHENTICATION_METHOD': 'email',
@@ -20,6 +23,8 @@ class Config(BaseConfig):
         },
         'REST_FRAMEWORK': DefaultProxy({}, 'get_drf_settings'),
         'REST_AUTH_SERIALIZERS': DefaultProxy({}, 'get_rest_auth_serializers'),
+        'REST_AUTH_REGISTER_SERIALIZERS':
+            DefaultProxy({}, 'get_rest_auth_register_serializers'),
     })
     defaults.INSTALLED_APPS_REQUIRED = [
         'dj_core_drf',
@@ -36,7 +41,9 @@ class Config(BaseConfig):
         'revproxy',
     ]
 
-    def get_drf_settings(self, settings):  # pylint: disable=unused-argument,no-self-use
+    # pylint: disable=unused-argument,no-self-use
+    def get_drf_settings(self, settings):
+        """Return a default settings dict for DRF."""
         return {
             'DEFAULT_PERMISSION_CLASSES': [
                 'rest_framework.permissions.IsAuthenticatedOrReadOnly'
@@ -46,16 +53,30 @@ class Config(BaseConfig):
                 'rest_framework.authentication.BasicAuthentication',
                 'rest_framework.authentication.SessionAuthentication',
             ],
-            'DEFAULT_PAGINATION_CLASS': 'dj_core_drf.pagination.ThousandMaxLimitOffsetPagination',
+            'DEFAULT_PAGINATION_CLASS':
+                'dj_core_drf.pagination.ThousandMaxLimitOffsetPagination',
             'DEFAULT_FILTER_BACKENDS': [
                 'rest_framework_filters.backends.DjangoFilterBackend',
             ],
-            'DEFAULT_METADATA_CLASS': 'dj_core_drf.metadata.ModelChoicesMetadata',
+            'DEFAULT_METADATA_CLASS':
+                'dj_core_drf.metadata.ModelChoicesMetadata',
         }
 
-    def get_rest_auth_serializers(self, settings):  # pylint: disable=unused-argument,no-self-use
+    # pylint: disable=unused-argument,no-self-use
+    def get_rest_auth_serializers(self, settings):
+        """Return a default settings dict for rest_auth."""
         return {
-            'USER_DETAILS_SERIALIZER': 'dj_core_drf.serializers.UserDetailsSerializer',
-            'PASSWORD_RESET_SERIALIZER': 'dj_core_drf.serializers.PasswordResetSerializer',
+            'USER_DETAILS_SERIALIZER':
+                'dj_core_drf.serializers.UserDetailsSerializer',
+            'PASSWORD_RESET_SERIALIZER':
+                'dj_core_drf.serializers.PasswordResetSerializer',
             'LOGIN_SERIALIZER': 'dj_core_drf.serializers.LoginSerializer',
+        }
+
+    # pylint: disable=unused-argument,no-self-use
+    def get_rest_auth_register_serializers(self, settings):
+        """Return a default settings dict for rest_auth.registration."""
+        return {
+            'REGISTER_SERIALIZER':
+                'dj_core_drf.serializers.RegisterSerializer',
         }
