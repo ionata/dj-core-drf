@@ -1,4 +1,5 @@
 # DEV
+- Add pipenv support for dev
 - Use setup.cfg until Flit supports `extras_require`
 - Add default registration serializer with casefold
 # 0.1.0
