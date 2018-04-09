@@ -1,6 +1,5 @@
-from pkg_resources import get_distribution
+"""A self-contained and extensible Django Rest Framework environment. """
 
-
-__version__ = get_distribution('dj_core_drf').version
+__version__ = '0.2.0'
 
 default_app_config = 'dj_core_drf.apps.DjCoreDRFConfig'
