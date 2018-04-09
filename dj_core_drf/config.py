@@ -34,6 +34,7 @@ class Config(BaseConfig):
         'rest_auth',
         'allauth',
         'allauth.account',
+        'allauth.socialaccount',
         'rest_auth.registration',
         'django_filters',
     ] + defaults.INSTALLED_APPS_REQUIRED

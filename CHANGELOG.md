@@ -1,4 +1,6 @@
 # DEV
+# 0.2.1
+- Bugfix for socialaccounts from allauth
 # 0.2.0
 - Add pipenv support for dev
 - Use setup.cfg until Flit supports `extras_require`

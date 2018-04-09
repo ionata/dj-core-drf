@@ -10,6 +10,18 @@ werkzeug = "*"
 [dev-packages]
 piprot = "*"
 twine = "*"
+werkzeug = "*"
+mypy = "*"
+python-language-server = "*"
+pyls-mypy = "*"
+pyls-isort = "*"
+yapf = "*"
+pycodestyle = "*"
+pydocstyle = "*"
+pylint = "*"
+pylint-django = "*"
+ipython = "*"
+ptpython = "*"
 
 [requires]
 python_version = "3.6"
